@@ -63,7 +63,7 @@ export default function HomePage() {
    
       <Box sx={{ display: 'flex',justifyContent:"center" }}>
         <TableContainer component={Paper} sx={{maxWidth:'900px'}}>
-              <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <Table sx={{ maxWidth: 650 }} aria-label="simple table">
                 <TableHead>
                   <TableRow>
                     <TableCell>Gracze</TableCell>
