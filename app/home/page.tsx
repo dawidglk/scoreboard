@@ -12,7 +12,8 @@ import AlertTitle from '@mui/material/AlertTitle';
 export default function HomePage() {
   return (
     <Box sx={{ display: 'flex' }}>
-      Tutaj w przyszlosci będa informacje
+
+    Home
     </Box>
   );
 }
