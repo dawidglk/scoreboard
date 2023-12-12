@@ -7,7 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-
+import Head from 'next/head'
 
 
 
@@ -60,7 +60,8 @@ const rows = [
 
 export default function HomePage() {
   return (
-    <Box sx={{ display: 'flex' }}>
+   
+      <Box sx={{ display: 'flex' }}>
         <TableContainer component={Paper}>
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
@@ -89,5 +90,7 @@ export default function HomePage() {
               </Table>
             </TableContainer>
     </Box>
+   
+
   );
 }

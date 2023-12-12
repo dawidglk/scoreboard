@@ -25,8 +25,8 @@ import MenuItem from '@mui/material/MenuItem';
 
 
 export const metadata = {
-  title: 'Next.js App Router + Material UI v5',
-  description: 'Next.js App Router + Material UI v5',
+  title: 'Tenis Koszęcin',
+  description: '',
 };
 
 const DRAWER_WIDTH = 240;
@@ -48,9 +48,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeRegistry>
         <AppBar component="nav">
         <Toolbar sx={{display:"flex",justifyContent:'space-between'}}>
-          <Box>
-            <SportsTennisIcon/>
-         
+          <Box sx={{display:"flex",alignItems:"center"}}>
+            <Box mr="10px">
+              <SportsTennisIcon/>
+            </Box>
+
+          <Box>Tenis Koszęcin</Box>
           </Box>
         </Toolbar>
       </AppBar>
