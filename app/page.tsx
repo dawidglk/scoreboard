@@ -26,7 +26,7 @@ const rows = [
     key: 3,
     players1: ["Ewelina", "Dawid"],
     players2: ["Ewelina", "Sławek"],
-    result: "6:1 3:6 (10:7)",
+    result: "6:1 3:6 10:7",
   },
   {
     key: 4,
@@ -38,7 +38,7 @@ const rows = [
     key: 5,
     players1: ["Ewelina", "Sławek"],
     players2: ["Adam", "Andrzej"],
-    result: "6:4 2:6 (9:10)",
+    result: "6:4 2:6 9:10",
   },
   {
     key: 6,
@@ -72,23 +72,43 @@ const rows = [
   },
 ];
 
+// Function to calculate win points and matches played for each team
 const calculateTeamPoints = (matchResults) => {
   const pointsMap = {};
   const matchesPlayedMap = {};
 
   matchResults.forEach((match) => {
-    const winners = match.result.split(" ")[0].split(":").map(Number);
-    const teamName = match.players1.join("-");
+    const sets = match.result
+      .split(" ")
+      .map((set) => set.split(":").map(Number));
+    const team1Name = match.players1.join("-");
+    const team2Name = match.players2.join("-");
 
-    pointsMap[teamName] =
-      (pointsMap[teamName] || 0) + (winners[0] > winners[1] ? 1 : 0);
-    matchesPlayedMap[teamName] = (matchesPlayedMap[teamName] || 0) + 1;
+    // Count the number of sets won by each team
+    let team1Sets = 0;
+    let team2Sets = 0;
 
-    const losingTeamName = match.players2.join("-");
-    pointsMap[losingTeamName] =
-      (pointsMap[losingTeamName] || 0) + (winners[1] > winners[0] ? 1 : 0);
-    matchesPlayedMap[losingTeamName] =
-      (matchesPlayedMap[losingTeamName] || 0) + 1;
+    sets.forEach(([score1, score2]) => {
+      if (score1 > score2) {
+        team1Sets += 1;
+      } else if (score2 > score1) {
+        team2Sets += 1;
+      }
+    });
+
+    // Determine the winner based on the majority of sets won
+    if (team1Sets > team2Sets) {
+      pointsMap[team1Name] = (pointsMap[team1Name] || 0) + 1;
+    } else if (team2Sets > team1Sets) {
+      pointsMap[team2Name] = (pointsMap[team2Name] || 0) + 1;
+    } else {
+      // It's a tie, both teams get a point
+      pointsMap[team1Name] = (pointsMap[team1Name] || 0) + 1;
+      pointsMap[team2Name] = (pointsMap[team2Name] || 0) + 1;
+    }
+
+    matchesPlayedMap[team1Name] = (matchesPlayedMap[team1Name] || 0) + 1;
+    matchesPlayedMap[team2Name] = (matchesPlayedMap[team2Name] || 0) + 1;
   });
 
   return { pointsMap, matchesPlayedMap };
@@ -98,13 +118,25 @@ export default function HomePage() {
   const { pointsMap, matchesPlayedMap } = calculateTeamPoints(rows);
 
   // Convert the pointsMap and matchesPlayedMap objects into an array of objects for sorting
-  const teamPointsArray = Object.keys(pointsMap)
-    .map((team) => ({
-      team,
-      points: pointsMap[team],
-      matchesPlayed: matchesPlayedMap[team],
-    }))
-    .sort((a, b) => b.points - a.points);
+  const teamPointsArray = Object.keys(pointsMap).map((team) => ({
+    team,
+    points: pointsMap[team],
+    matchesPlayed: matchesPlayedMap[team],
+  }));
+
+  // Include teams with 0 points in the array
+  Object.keys(matchesPlayedMap)
+    .filter((team) => !pointsMap[team])
+    .forEach((team) => {
+      teamPointsArray.push({
+        team,
+        points: 0,
+        matchesPlayed: matchesPlayedMap[team],
+      });
+    });
+
+  // Sort the array based on points (from higher to lower)
+  teamPointsArray.sort((a, b) => b.points - a.points);
 
   return (
     <>
