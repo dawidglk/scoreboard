@@ -70,7 +70,7 @@ const rows = [
 {
   key:10,
   players1: ['Jerzy','Maksymilian'],
-  players2:  ['Adam','Andrzej']
+  players2:  ['Adam','Andrzej'],
   result:'6:2 6:4'
 }
 ]
