@@ -20,40 +20,58 @@ const rows = [
   result:'6:2 7:6'
 },
 {
-  key:5,
+  key:2,
   players1:['Ewelina','Dawid'],
   players2: ['Adam','Andrzej'],
   result:'6:2 7:6'
 },
 {
-  key:2,
+  key:3,
+  players1:['Ewelina','Dawid'],
+  players2: ['Ewelina','Sławek'],
+  result:'6:1 3:6 (10:7)'
+},
+{
+  key:4,
   players1:['Ewelina','Sławek'],
   players2:  ['Jerzy','Maksymilian'],
   result:'1:6 3:6'
 },
 {
-  key:7,
-  players1:['Adam','Andrzej'],
-  players2: ['Ewelina','Sławek'],
-  result:'4:6 6:2 (10:9)'
-},
-{
-  key:3,
-  players1: ['Staszek','Artur'],
-  players2:  ['Ewelina','Sławek'],
-  result:'6:4 6:3'
+  key:5,
+  players1:['Ewelina','Sławek'],
+  players2:['Adam','Andrzej'],
+  result:'6:4 2:6 (9:10)'
 },
 {
   key:6,
+  players1: ['Ewelina','Sławek'],
+  players2:  ['Staszek','Artur'],
+  result:'4:6 3:6'
+},
+{
+  key:7,
   players1: ['Staszek','Artur'],
   players2:  ['Adam','Andrzej'],
   result:'7:5 7:6'
+},
+{
+  key:8,
+  players1: ['Jerzy','Maksymilian'],
+  players2:  ['Staszek','Artur'],
+  result:'6:2 6:3'
 },
 {
   key:4,
   players1: ['Jerzy','Maksymilian'],
   players2:  ['Kuba','Krzysztof'],
   result:'6:4 6:2'
+},
+{
+  key:4,
+  players1: ['Jerzy','Maksymilian'],
+  players2:  ['Adam','Andrzej']
+  result:'6:2 6:4'
 }
 ]
 
