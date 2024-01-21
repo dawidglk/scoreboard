@@ -62,13 +62,13 @@ const rows = [
   result:'6:2 6:3'
 },
 {
-  key:4,
+  key:9,
   players1: ['Jerzy','Maksymilian'],
   players2:  ['Kuba','Krzysztof'],
   result:'6:4 6:2'
 },
 {
-  key:4,
+  key:10,
   players1: ['Jerzy','Maksymilian'],
   players2:  ['Adam','Andrzej']
   result:'6:2 6:4'
@@ -80,7 +80,7 @@ export default function ScorePage() {
   return (
     <Box sx={{ display: 'flex' }}>
         <TableContainer component={Paper}>
-              <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <Table  aria-label="simple table">
                 <TableHead>
                   <TableRow>
                     <TableCell>Gracze</TableCell>
